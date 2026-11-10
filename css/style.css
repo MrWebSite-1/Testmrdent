@@ -273,7 +273,7 @@ nav a:hover{color:var(--deep)}
 .svc-addr .svc-a{color:#fff}
 .svc-addr .svc-ph a{color:var(--accent);font-weight:700;font-size:1.15rem;text-decoration:none}
 .svc-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-.svc-addr .btn.ghost{color:#fff;border-color:rgba(255,255,255,.35)}
+.svc-addr .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}.svc-addr .btn.ghost:hover{background:rgba(255,255,255,.12)}
 
 /* ===== MANZIL: to'liq yashil + sekin ochilish/yopilish ===== */
 .reader-body:has(.svc-addr){padding-bottom:0}

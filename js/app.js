@@ -93,12 +93,21 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")modal.classList.remo
 const WEBHOOK_URL="https://misterdent.app.n8n.cloud/webhook/sayt-forma";
 function send(name,phone,doc,svc){
  const data={name,phone,doctor:doc||"",service:svc||"",page:location.href,time:new Date().toISOString()};
- fetch(WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)})
-  .then(r=>{if(!r.ok)throw 0})
-  .catch(()=>{const text=`Yangi so‘rov\nIsm: ${name}\nTelefon: ${phone}${doc?"\nShifokor: "+doc:""}${svc?"\nXizmat: "+svc:""}`;window.open(`https://t.me/${C.telegram}?text=${encodeURIComponent(text)}`,"_blank")});
+ return fetch(WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)})
+  .then(r=>{if(!r.ok)throw 0});
 }
-$("bookForm").addEventListener("submit",e=>{e.preventDefault();$("ok").style.display="block";send($("n").value,$("p").value,$("d").value)});
-$("contactForm").addEventListener("submit",e=>{e.preventDefault();$("ok2").style.display="block";send($("n2").value,$("p2").value,"")});
+function handle(e,nId,pId,dId,okId){
+ e.preventDefault();
+ const ok=$(okId);ok.style.display="none";
+ const btn=e.target.querySelector("button");
+ if(btn)btn.disabled=true;
+ send($(nId).value,$(pId).value,dId?$(dId).value:"")
+  .then(()=>{ok.style.display="block";e.target.reset()})
+  .catch(()=>alert("Yuborilmadi. Iltimos, qayta urinib ko‘ring yoki bizga qo‘ng‘iroq qiling."))
+  .finally(()=>{if(btn)btn.disabled=false});
+}
+$("bookForm").addEventListener("submit",e=>handle(e,"n","p","d","ok"));
+$("contactForm").addEventListener("submit",e=>handle(e,"n2","p2","","ok2"));
 
 /* ===== SCROLL ANIMATSIYA ===== */
 (function(){

@@ -90,7 +90,7 @@ document.addEventListener("click",e=>{
  if(e.target===modal||e.target.id==="close")modal.classList.remove("open");
 });
 document.addEventListener("keydown",e=>{if(e.key==="Escape")modal.classList.remove("open")});
-const WEBHOOK_URL="https://SIZNING-N8N-MANZIL/webhook/sayt-forma";
+const WEBHOOK_URL="https://misterdent.app.n8n.cloud/webhook/sayt-forma";
 function send(name,phone,doc,svc){
  const data={name,phone,doctor:doc||"",service:svc||"",page:location.href,time:new Date().toISOString()};
  fetch(WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)})

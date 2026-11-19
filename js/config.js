@@ -1,7 +1,7 @@
 /* ===== SOZLAMALAR: mijozga qarab faqat shu yerni o'zgartiring ===== */
 const CONFIG={
 brand:"Mister Dent",
-phone:"+998 95 170 66 69",
+phone:"+998 91 764 65 31",
 logo:"images/logo.jpg",
 address:"Toshkent, Yunusobod tumani, Tuzel-2, 12B-uy",
 hours:"Yozilish: Telegram yoki Instagram Direct orqali",
